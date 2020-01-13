@@ -19,7 +19,6 @@ function execute(pmin, psec){
     t = window.setInterval(function(){
         countDown();
         if (isOver()){
-            console.log("over");
             clearTimeout(t);
         }
       }, 1000);
