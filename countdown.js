@@ -1,7 +1,6 @@
 
 let min = 0;
 let sec = 0;
-
 $(function() {
     $("#btn-1").click(function(){
         execute(1, 0);
@@ -17,7 +16,6 @@ $(function() {
 function execute(pmin, psec){
     min = pmin;
     sec = psec;
-    clearTimeout(t);
     t = window.setInterval(function(){
         countDown();
         if (isOver()){
