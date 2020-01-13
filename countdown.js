@@ -12,25 +12,8 @@ function checkTicking(app){
         clearInterval(t);
         t=false;
     }
+    return t;
 }
-
-$(function() {
-    let app = new App();
-    
-    $("#btn-1").click(function(){
-        app.execute(1, 0);
-        checkTicking(app);
-    });
-    $("#btn-2").click(function(){
-        app.execute(2, 0);
-        checkTicking(app);
-    });
-
-    $("#btn-5").click(function(){
-        app.execute(5, 0);
-        checkTicking(app);
-    });
-});
 
 function App(){
     this.min = 0;
@@ -77,3 +60,24 @@ function App(){
         this.printCountDown();
     }
 }
+
+$(function() {
+    let app = new App();
+    
+    $("#btn-1").click(function(){
+        app.execute(1, 0);
+        checkTicking(app);
+        t ? $('#btn-1').text("Stop") : $('#btn-1').text("Start Over (1 min)")
+    });
+    $("#btn-2").click(function(){
+        app.execute(2, 0);
+        checkTicking(app);
+        t ? $('#btn-2').text("Stop") : $('#btn-2').text("Start Over (2 min)")
+    });
+
+    $("#btn-5").click(function(){
+        app.execute(5, 0);
+        checkTicking(app);
+        t ? $('#btn-5').text("Stop") : $('#btn-5').text("Start Over (5 min)")
+    });
+});
