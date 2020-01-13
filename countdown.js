@@ -1,6 +1,8 @@
 let t = false;
+let btn = 0;
 
-function checkTicking(app){
+function checkTicking(app, pbtn){
+    btn = pbtn
     if(!t){
         t = window.setInterval(function(){
             app.countDown();
@@ -67,18 +69,15 @@ $(function() {
     
     $("#btn-1").click(function(){
         app.execute(1, 0);
-        checkTicking(app);
-        t ? $('#btn-1').text("Stop") : $('#btn-1').text("Start Over (1 min)")
+        checkTicking(app);    
     });
     $("#btn-2").click(function(){
         app.execute(2, 0);
         checkTicking(app);
-        t ? $('#btn-2').text("Stop") : $('#btn-2').text("Start Over (2 min)")
     });
 
     $("#btn-5").click(function(){
         app.execute(5, 0);
         checkTicking(app);
-        t ? $('#btn-5').text("Stop") : $('#btn-5').text("Start Over (5 min)")
     });
 });
