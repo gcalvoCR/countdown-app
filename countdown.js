@@ -1,6 +1,7 @@
 
 let min = 0;
 let sec = 0;
+
 $(function() {
     $("#btn-1").click(function(){
         execute(1, 0);

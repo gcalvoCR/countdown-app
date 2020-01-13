@@ -39,7 +39,6 @@ button{
     background: transparent;
     padding: 20px;
     border-radius: 20px;
-    /* display: inline-block; */
     margin: 10px;
     border: solid white 1px;
     transition: all 0.4s ease 0s;
