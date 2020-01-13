@@ -23,6 +23,7 @@ function App(){
     this.execute = function(pmin, psec){
         this.min = pmin;
         this.sec = psec;
+        this.printCountDown();
     }
 
     this.isOver = function(){
