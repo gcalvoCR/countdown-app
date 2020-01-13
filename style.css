@@ -7,8 +7,7 @@ body {
 h1 {
     font-family: 'Orbitron', sans-serif;
     line-height: 50vh;
-    font-size: 12em;
-    max-width: 95%;
+    font-size: 20vh;
 }
 p{
     font-size: 3vh; 
@@ -19,12 +18,14 @@ footer p{
     width:98%;
     text-align: right;
     font-size: 3vh;
+    padding-top: 10vh;
 }
 
 .center{
+    max-width: 100%;
     text-align: center; 
     vertical-align: middle;
-    height:72vh;
+    height:65vh;
 }
 
 .btns{
@@ -34,13 +35,13 @@ footer p{
 }
 
 button{
+    font-size: 3vh;
     color: #fff !important;
-    text-transform: uppercase;
     text-decoration: none;
     background: transparent;
-    padding: 20px;
-    border-radius: 20px;
-    margin: 10px;
+    padding: 2vh;
+    border-radius: 5vh;
+    margin: 1vh;
     border: solid rgb(243, 97, 53) 1px;
     transition: all 0.4s ease 0s;
 }

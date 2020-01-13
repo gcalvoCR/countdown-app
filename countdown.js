@@ -1,61 +1,79 @@
+let t = false;
 
-let min = 0;
-let sec = 0;
+function checkTicking(app){
+    if(!t){
+        t = window.setInterval(function(){
+            app.countDown();
+            if (app.isOver()){
+                clearTimeout(t);
+            }
+          }, 1000);
+    } else{
+        clearInterval(t);
+        t=false;
+    }
+}
 
 $(function() {
+    let app = new App();
+    
     $("#btn-1").click(function(){
-        execute(1, 0);
+        app.execute(1, 0);
+        checkTicking(app);
     });
     $("#btn-2").click(function(){
-        execute(2, 0);
+        app.execute(2, 0);
+        checkTicking(app);
     });
+
     $("#btn-5").click(function(){
-        execute(5, 0);
+        app.execute(5, 0);
+        checkTicking(app);
     });
 });
 
-function execute(pmin, psec){
-    min = pmin;
-    sec = psec;
-    t = window.setInterval(function(){
-        countDown();
-        if (isOver()){
-            clearTimeout(t);
+function App(){
+    this.min = 0;
+    this.sec = 0;
+    this.t= false;
+    
+    this.execute = function(pmin, psec){
+        this.min = pmin;
+        this.sec = psec;
+    }
+
+    this.isOver = function(){
+        (this.min===0 && this.sec ===0) ? over=true: over=false;
+        return over;
+    }
+    
+    this.decreaseSeconds = function (){
+        this.sec === 0 ? this.sec = 59 : this.sec --;
+        return this.sec;
+    }
+    
+    this.decreaseMinutes = function (){
+        this.min === 0 ? this.min = 0 : this.min --;
+        return this.min;
+    }
+    
+    this.printCountDown = function(){
+        if(this.min<10 && this.sec<10){
+            $("#countdown").text("0"+this.min+":0"+this.sec);
+        } 
+        else if(this.min<10 && this.sec>10){
+            $("#countdown").text("0"+this.min+":"+this.sec);
         }
-      }, 1000);
-}
-
-function isOver(){
-    (min===0 && sec ===0) ? over=true: over=false;
-    return over;
-}
-
-function decreaseSeconds(){
-    sec === 0 ? sec = 59 : sec --;
-    return sec;
-}
-
-function decreaseMinutes(){
-    min === 0 ? min = 0 : min --;
-    return min;
-}
-
-function printCountDown(){
-    if(min<10 && sec<10){
-        $("#countdown").text("0"+min+":0"+sec);
-    } 
-    else if(min<10 && sec>10){
-        $("#countdown").text("0"+min+":"+sec);
+        else if(this.min>10 && this.sec>10){
+            $("#countdown").text(this.min+":"+this.sec);
+        }    
     }
-    else if(min>10 && sec>10){
-        $("#countdown").text(min+":"+sec);
-    }    
-}
-
-function countDown(){
-    if (sec===0){
-        decreaseMinutes();
+    
+    this.countDown = function(){
+        if (this.sec===0){
+            this.decreaseMinutes();
+        }
+        this.decreaseSeconds();
+        this.printCountDown();
     }
-    decreaseSeconds();
-    printCountDown();
 }
