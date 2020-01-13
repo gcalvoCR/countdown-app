@@ -3,7 +3,6 @@ let min = 0;
 let sec = 0;
 
 $(function() {
-    location.reload(true);
     $("#btn-1").click(function(){
         execute(1, 0);
     });
