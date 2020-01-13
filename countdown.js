@@ -59,7 +59,3 @@ function countDown(){
     decreaseSeconds();
     printCountDown();
 }
-
-  
-
-
